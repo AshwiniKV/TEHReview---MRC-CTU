@@ -10,3 +10,11 @@ Interest:
 - Identifying subgroups that represent distinct responses to treatment
 - Estimating the effects for the determined patient subpopulations
 - Characterise such subpopulations (Variable Selection)
+
+Task: Comprehensive Simulation Study
+
+Themes: 
+
+- Tree based methods
+- Non tree based methods
+- Metalearners
