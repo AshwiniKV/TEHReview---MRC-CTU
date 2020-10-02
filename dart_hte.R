@@ -65,8 +65,12 @@ bart.tot<-wbart(x.train = xtr, y.train = y, x.test = xte)
 catt_mat<-bart.tot$yhat.train[,which(Z ==1)] - bart.tot$yhat.test
 catite<-apply(catt_mat, 2, mean)
 mndiff<-apply(bart.tot$yhat.train[,which(Z ==1)] - bart.tot$yhat.test,1, mean)
+
+library(coda)
+# Compute credible intervals
 credible_int <- apply(catt_mat, 1, function(row) HPDinterval(as.mcmc(row), prob=0.95))
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                       
 # Causal DART
 library(distr)
 
