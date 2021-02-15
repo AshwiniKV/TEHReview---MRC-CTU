@@ -1,5 +1,0 @@
-#Simulated data
-
-p = 3; n = 100; n_burn = 2000; n_sim = 120
-
-\textbf{for} i = 1, \dots, n
