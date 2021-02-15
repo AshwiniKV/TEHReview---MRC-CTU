@@ -51,3 +51,6 @@ OUTPUT perCoverage
 # Interval width
 width<-high95 - low95
 OUTPUT mean(width)
+
+# MSE 
+mean(ate_tau[[i]] - mntau[i)^2)
