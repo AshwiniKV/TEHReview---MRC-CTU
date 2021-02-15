@@ -9,7 +9,7 @@ FOR i = 1,...,n_sim
   DRAW z from Bin(1, 0.5)
   SET mu as 0.9*x1 + 0.8*x2 + 0.7*x3
   pi[i] <- pnorm(mu)
-  SET tau (0.5*(x1 >-3/4) + 0.25*(x2 > 0.2) + 0.25*(x3 > 3/4))
+  SET tau as (0.5*(x1 >-3/4) + 0.25*(x2 > 0.2) + 0.25*(x3 > 3/4))
   ate_tau[i] <- mean(tau)
   y_noiseless <- mu + tau*z[i]
   y[i] <- y_noiseless + rnorm(z)
@@ -18,7 +18,7 @@ FOR i = 1,...,n_sim
   pscore[i] <- predict(model_ps, type = "response")
   pdf[i] <- data.frame(pscore[i], z[i])
   
-RETURN(pi, ate_tau, y, pscore, pdf)
+RETURN(z, pi, ate_tau, y, pscore, pdf)
 #end  
 
 
