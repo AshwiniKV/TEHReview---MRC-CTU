@@ -17,10 +17,27 @@ INPUT(alpha, F0, data)
   SET F_bar as n/(n+alpha)F_n+alpha/(n+alpha)F0
 RETURN dprior(alpa+n, F_bar)
 
+
+**for** i in 1:n_sim{
+
 INPUT DRAW f0 from N(0, 3)
 INPUT DRAW F0 as a cdf
+  # BART
+  bart.tot<-BARTMODEL 
+  # (implemented using the wbart function in the BART package)
+  # Compute the individual treatment effect (# as specified in Hill, 2011)
+  cate_mat<-bart.tot$yhat.train - bart.tot$yhat.test
 
-# BART
-bart.tot<-BARTMODEL (# implemented using the wbart function in the BART package)
-# Compute the individual treatment effect
-cate_mat<-bart.tot
+    **for** j in 1:nrow(cate_mat){
+      data<-cate_mat[j,]
+      Fpost<-dpost(5, F0, data)
+      posterior<-Fpost()
+      tau_post[[j]]<-mean(posterior)
+    }
+    
+  mntau[i]<-mean(unlist(tau_post))
+  
+  
+  
+  
+}  
