@@ -1,5 +1,6 @@
-#Simulated data
+##Simulated data
 
+#begin
 p = 3; n = 100; n_burn = 2000; n_sim = 120
 
 FOR i = 1,...,n_sim
@@ -10,6 +11,7 @@ FOR i = 1,...,n_sim
   tau = (0.5(x1 >-3/4) + 0.25(x2 > 0.2) + 0.25(x3 > 3/4))
   ate_tau = mean(tau)
   y_noiseless = mu + tau z
-  y = y_noiseless + rnorm(z
+  y = y_noiseless + rnorm(z)
+#end  
 
 
