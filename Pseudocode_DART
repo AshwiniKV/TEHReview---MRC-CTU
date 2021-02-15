@@ -9,8 +9,8 @@ RETURN function(size = 10000){sample(s, size, prob = w, replace = TRUE)}
 # Dirichlet Posterior
 INPUT(alpha, F0, data)
   SET n as length of data
-  F_n<-DiscreteDistribtion(data)
-  F_bar<-n/(n+alpha)F_n+alpha/(n+alpha)F0
+  SET F_n as DiscreteDistribtion(data)
+  SET F_bar as n/(n+alpha)F_n+alpha/(n+alpha)F0
 RETURN dprior(alpa+n, F_bar)
 
 DRAW f0 from N(0, 3)
