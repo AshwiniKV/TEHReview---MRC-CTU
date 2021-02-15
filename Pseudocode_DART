@@ -18,7 +18,7 @@ INPUT(alpha, F0, data)
 RETURN dprior(alpa+n, F_bar)
 
 
-**for** i in 1:n_sim{
+for i in 1:n_sim{
 
 INPUT DRAW f0 from N(0, 3)
 INPUT DRAW F0 as a cdf
@@ -28,16 +28,14 @@ INPUT DRAW F0 as a cdf
   # Compute the individual treatment effect (# as specified in Hill, 2011)
   cate_mat<-bart.tot$yhat.train - bart.tot$yhat.test
 
-    **for** j in 1:nrow(cate_mat){
-      data<-cate_mat[j,]
+    for j in 1:nrow(cate_mat){
+      Use row j of the CATE matrix
       Fpost<-dpost(5, F0, data)
       posterior<-Fpost()
       tau_post[[j]]<-mean(posterior)
     }
     
   mntau[i]<-mean(unlist(tau_post))
-  
-  
-  
-  
+  low95[i]<-HPD(as.mcmc(unlist(tau_post)), prob = 0.95)[1]
+  high95[i]<-HPD(as.mcmc(unlist(tau_post)), prob = 0.95)[2]
 }  
