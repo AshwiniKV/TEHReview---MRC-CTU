@@ -1,3 +1,5 @@
+library(BART)
+
 # Dirichlet Prior
 FUNCTION dprior
 INPUT(alpha, F0, data)
@@ -15,8 +17,10 @@ INPUT(alpha, F0, data)
   SET F_bar as n/(n+alpha)F_n+alpha/(n+alpha)F0
 RETURN dprior(alpa+n, F_bar)
 
-DRAW f0 from N(0, 3)
-DRAW F0 as a cdf
+INPUT DRAW f0 from N(0, 3)
+INPUT DRAW F0 as a cdf
 
 # BART
-
+bart.tot<-BARTMODEL (# implemented using the wbart function in the BART package)
+# Compute the individual treatment effect
+cate_mat<-bart.tot
