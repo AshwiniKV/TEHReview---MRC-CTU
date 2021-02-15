@@ -53,4 +53,6 @@ width<-high95 - low95
 OUTPUT mean(width)
 
 # MSE 
-mean(ate_tau[[i]] - mntau[i)^2)
+mse<-mean(ate_tau[[i]] - mntau[i)^2)
+REPEAT length(ate_tau)
+OUTPUT median(unlist(mse)
