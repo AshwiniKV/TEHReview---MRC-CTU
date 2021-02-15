@@ -46,8 +46,8 @@ INPUT i
 ifelse(low95[i]<=ate_tau[[i]] & ate_tau[[i]] <=high95[i], 1, 0)
 REPEAT length(ate_tau)
 perCoverage<-sum(unlist(coverage)/length(ate_tau)
-perCoverage
+OUTPUT perCoverage
 
 # Interval width
 width<-high95 - low95
-mean(width)
+OUTPUT mean(width)
