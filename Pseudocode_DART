@@ -1,5 +1,5 @@
 # Dirichlet Prior
-Input(alpha, F0, data)
+INPUT(alpha, F0, data)
   s<-DRAW from F0
   V<-DRAW from Beta(1, alpha)
   w[1]<-1
@@ -7,7 +7,7 @@ Input(alpha, F0, data)
 RETURN function(size = 10000){sample(s, size, prob = w, replace = TRUE)}
 
 # Dirichlet Posterior
-Input(alpha, F0, data)
+INPUT(alpha, F0, data)
   SET n as length of data
   F_n<-DiscreteDistribtion(data)
   F_bar<-n/(n+alpha)F_n+alpha/(n+alpha)F0
