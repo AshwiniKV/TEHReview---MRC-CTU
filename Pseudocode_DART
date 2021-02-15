@@ -1,4 +1,5 @@
 # Dirichlet Prior
+FUNCTION dprior
 INPUT(alpha, F0, data)
   s<-DRAW from F0
   V<-DRAW from Beta(1, alpha)
@@ -7,6 +8,7 @@ INPUT(alpha, F0, data)
 RETURN function(size = 10000){sample(s, size, prob = w, replace = TRUE)}
 
 # Dirichlet Posterior
+FUNCTION dposterior
 INPUT(alpha, F0, data)
   SET n as length of data
   SET F_n as DiscreteDistribtion(data)
@@ -15,4 +17,6 @@ RETURN dprior(alpa+n, F_bar)
 
 DRAW f0 from N(0, 3)
 DRAW F0 as a cdf
+
+# BART
 
