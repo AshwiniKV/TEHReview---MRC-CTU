@@ -3,7 +3,7 @@ INPUT(alpha, F0, data)
   s<-DRAW from F0
   V<-DRAW from Beta(1, alpha)
   w[1]<-1
-  w[2:n]<-compute stick-breaking process into w[i]; i = 2,...,n
+  w[2:n]<-Compute stick-breaking process into w[i]; i = 2,...,n
 RETURN function(size = 10000){sample(s, size, prob = w, replace = TRUE)}
 
 # Dirichlet Posterior
