@@ -4,16 +4,14 @@ Input(alpha, F0, data)
   V<-DRAW from Beta(1, alpha)
   w[1]<-1
   w[2:n]<-compute stick-breaking process into w[i]; i = 2,...,n
-    function(size = 10000){
-      sample(s, size, prob = w, replace = TRUE)
-    }
+RETURN function(size = 10000){sample(s, size, prob = w, replace = TRUE)}
 
 # Dirichlet Posterior
 Input(alpha, F0, data)
   SET n as length of data
   F_n<-DiscreteDistribtion(data)
   F_bar<-n/(n+alpha)F_n+alpha/(n+alpha)F0
-  DRAW dprior(alpa+n, F_bar)
+RETURN dprior(alpa+n, F_bar)
 
 DRAW f0 from N(0, 3)
 DRAW F0 as a cdf
