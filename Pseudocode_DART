@@ -1,5 +1,4 @@
 # Dirichlet Prior
-
 Input(alpha, F0, data)
   s<-DRAW from F0
   V<-DRAW from Beta(1, alpha)
