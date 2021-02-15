@@ -10,12 +10,11 @@ Input(alpha, F0, data)
     }
 
 # Dirichlet Posterior
-dposterior<-function(alpha, FO, data){
+Input(alpha, F0, data)
   SET n as length of data
   F_n<-DiscreteDistribtion(data)
   F_bar<-n/(n+alpha)F_n+alpha/(n+alpha)F0
   DRAW dprior(alpa+n, F_bar)
-}
 
 DRAW f0 from N(0, 3)
 DRAW F0 as a cdf
