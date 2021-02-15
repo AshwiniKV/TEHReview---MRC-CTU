@@ -5,10 +5,10 @@ SET p <- 3; n <- 100; n_burn <- 2000; n_sim <- 120
 
 FOR i = 1,...,n_sim
   SET seed as i
-  x1 <- x2 <- x3 <- N(0, 1)
-  mu <- 0.9*x1 + 0.8*x2 + 0.7*x3
-  pi[[i]] <- pnorm(mu)
-  tau <- (0.5*(x1 >-3/4) + 0.25*(x2 > 0.2) + 0.25*(x3 > 3/4))
+  DRAW x1, x2 and x3 from N(0, 1)
+  SET mu as 0.9*x1 + 0.8*x2 + 0.7*x3
+  pi[i] <- pnorm(mu)
+  SET tau (0.5*(x1 >-3/4) + 0.25*(x2 > 0.2) + 0.25*(x3 > 3/4))
   ate_tau[[i]] <- mean(tau)
   y_noiseless <- mu + tau*z
   y[[i]] <- y_noiseless + rnorm(z)
