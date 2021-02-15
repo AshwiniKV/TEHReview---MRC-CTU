@@ -41,7 +41,7 @@ for i in 1:n_sim{
 }  
 
 # Compute 95% coverage
-FUNCTIOn isCovered
+FUNCTION isCovered
 INPUT i
 ifelse(low95[i]<=ate_tau[[i]] & ate_tau[[i]] <=high95[i], 1, 0)
 REPEAT length(ate_tau)
