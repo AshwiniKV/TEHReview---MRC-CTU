@@ -1,21 +1,21 @@
 ##Simulated data
 
 #begin
-SET p = 3; n = 100; n_burn = 2000; n_sim = 120
+SET p <- 3; n <- 100; n_burn <- 2000; n_sim <- 120
 
 FOR i = 1,...,n_sim
   SET seed as i
-  x1 = x2 = x3 = N(0, 1)
-  mu = 0.9*x1 + 0.8*x2 + 0.7*x3
-  pi = pnorm(mu)
-  tau = (0.5(x1 >-3/4) + 0.25(x2 > 0.2) + 0.25(x3 > 3/4))
-  ate_tau = mean(tau)
-  y_noiseless = mu + tau*z
-  y = y_noiseless + rnorm(z)
+  x1 <- x2 <- x3 <- N(0, 1)
+  mu <- 0.9*x1 + 0.8*x2 + 0.7*x3
+  pi <- pnorm(mu)
+  tau <- (0.5(x1 >-3/4) + 0.25(x2 > 0.2) + 0.25(x3 > 3/4))
+  ate_tau <- mean(tau)
+  y_noiseless <- mu + tau*z
+  y <- y_noiseless + rnorm(z)
   
-  model_ps = glm(z ~x1 + x2 + x3, family = binomial("logit"))
-  pscore = predict(model_ps, type = "response")
-  pdf = data.frame(pscore, z)
+  model_ps <- glm(z ~x1 + x2 + x3, family = binomial("logit"))
+  pscore <- predict(model_ps, type = "response")
+  pdf <- data.frame(pscore, z)
 #end  
 
 
