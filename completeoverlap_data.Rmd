@@ -12,6 +12,10 @@ FOR i = 1,...,n_sim
   ate_tau = mean(tau)
   y_noiseless = mu + tau*z
   y = y_noiseless + rnorm(z)
+  
+  model_ps = glm(z ~x1 + x2 + x3, family = binomial("logit"))
+  pscore = predict(model_ps, type = "response")
+  pdf = data.frame(pscore, z)
 #end  
 
 
