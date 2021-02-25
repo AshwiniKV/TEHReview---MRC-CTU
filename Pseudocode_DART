@@ -13,7 +13,7 @@ RETURN function(size = 10000){sample(s, size, prob = w, replace = TRUE)}
 FUNCTION dpost
 INPUT(alpha, F0, data)
   SET n as length of data
-  SET F_n as DiscreteDistribtion(data)
+  SET F_n as empirical CDF(data)
   SET F_bar as n/(n+alpha)F_n+alpha/(n+alpha)F0
 RETURN dprior(alpa+n, F_bar)
 
@@ -27,10 +27,10 @@ FOR i in 1,......,500
       # Compute the individual treatment effect (# as specified in Hill, 2011)
       cate_mat<-bart.tot$yhat.train - bart.tot$yhat.test
 
-        FOR j in 1,.....,nrow(cate_mat)
-          Fpost<-dpost(5, F0, data)
-          posterior<-Fpost()
-          tau_post[[j]]<-mean(posterior)
+        FOR j in 1,.....,NROW(cate_mat)
+            Fpost<-dpost(5, F0, data)
+            posterior<-Fpost()
+            tau_post[[j]]<-mean(posterior)
 
       mntau[i]<-mean(unlist(tau_post))
       low95[i]<-HPD(as.mcmc(unlist(tau_post)), prob = 0.95)[1]
