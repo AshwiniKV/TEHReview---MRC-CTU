@@ -10,7 +10,7 @@ INPUT(alpha, F0, data)
 RETURN function(size = 10000){sample(s, size, prob = w, replace = TRUE)}
 
 # Dirichlet Posterior
-FUNCTION dposterior
+FUNCTION dpost
 INPUT(alpha, F0, data)
   SET n as length of data
   SET F_n as DiscreteDistribtion(data)
@@ -24,12 +24,10 @@ for i in 1:n_sim{
     INPUT DRAW F0 as a cdf
       # BART
       bart.tot<-BARTMODEL 
-      # (implemented using the wbart function in the BART package)
       # Compute the individual treatment effect (# as specified in Hill, 2011)
       cate_mat<-bart.tot$yhat.train - bart.tot$yhat.test
 
         for j in 1:nrow(cate_mat){
-          Use row j of the CATE matrix
           Fpost<-dpost(5, F0, data)
           posterior<-Fpost()
           tau_post[[j]]<-mean(posterior)
