@@ -18,7 +18,7 @@ INPUT(alpha, F0, data)
 RETURN dprior(alpa+n, F_bar)
 
 
-FOR i in 1,......,500
+FOR i in 1,......,NSIM
 
     INPUT DRAW f0 from N(0, 3)
     INPUT DRAW F0 as a cdf
