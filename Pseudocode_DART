@@ -28,6 +28,7 @@ FOR i in 1,......,500
       cate_mat<-bart.tot$yhat.train - bart.tot$yhat.test
 
         FOR j in 1,.....,NROW(cate_mat)
+            SET data as cate_mat[j,]
             Fpost<-dpost(5, F0, data)
             posterior<-Fpost()
             tau_post[[j]]<-mean(posterior)
