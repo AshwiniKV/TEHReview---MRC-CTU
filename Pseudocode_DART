@@ -28,6 +28,7 @@ FOR i in 1,......,NSIM
       cate_mat<-bart.tot$yhat.train - bart.tot$yhat.test
 
         FOR j in 1,.....,NROW(cate_mat)
+            #A row of cate_mat records Individual Treatment effects
             SET data as cate_mat[j,]
             Fpost<-dpost(5, F0, data)
             posterior<-Fpost()
